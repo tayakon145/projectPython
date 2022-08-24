@@ -1,0 +1,179 @@
+from tkinter import *
+from tkinter import messagebox
+
+def Total(event):
+    try:
+        num_price1 = int(taxtNum1.get()) * int(taxtprice1.get())
+        num_price2 = int(taxtNum2.get()) * int(taxtprice2.get())
+        num_price3 = int(taxtNum3.get()) * int(taxtprice3.get())
+        total = num_price3+num_price1+num_price2
+        label0.configure(text = float(total))
+    except:
+        messagebox.showerror("Error", "กรุณาข้อมูลให้ถูกต้อง")
+
+def changeMoney(event):
+    try:
+        num_price1 = int(taxtNum1.get()) * int(taxtprice1.get())
+        num_price2 = int(taxtNum2.get()) * int(taxtprice2.get())
+        num_price3 = int(taxtNum3.get()) * int(taxtprice3.get())
+        total = num_price3 + num_price1 + num_price2
+        ton = int(taxtcash.get()) - total
+        label00.configure(text = float(ton))
+    except:
+        messagebox.showerror("Error", "กรุณาข้อมูลให้ถูกต้อง")
+def showBill(event):
+    try:
+        num_price1 = int(taxtNum1.get()) * int(taxtprice1.get())
+        num_price2 = int(taxtNum2.get()) * int(taxtprice2.get())
+        num_price3 = int(taxtNum3.get()) * int(taxtprice3.get())
+        total = num_price3 + num_price1 + num_price2
+        ton = int(taxtcash.get()) - total
+        print("---------Tayakon Welcome---------")
+        print("               --                  ")
+        print("  รายการสิ้นค้า     จำนวน        ราคา ")
+        print("---------------------------------")
+        print(taxtName1.get(), "         ", taxtNum1.get(), "         ", num_price1)
+        print(taxtName2.get(), "         ", taxtNum2.get(), "         ", num_price2)
+        print(taxtName3.get(), "         ", taxtNum3.get(), "         ", num_price3)
+        print("                      ", "Total =", total)
+        print("---------------------------------")
+        print("Vat = 0")
+        print("Discount = 0")
+        print("Money =",taxtcash.get())
+        print("ChangeMoney =",ton)
+        print("Total = ", total)
+        print("------------Thank you------------")
+    except:
+        messagebox.showerror("Error", "กรุณาข้อมูลให้ถูกต้อง")
+
+def clear(event):
+    txtName1 = taxtName1.get()
+    taxtName1.delete(0,len(txtName1))
+    txtName2 = taxtName2.get()
+    taxtName2.delete(0, len(txtName2))
+    txtName3 = taxtName3.get()
+    taxtName3.delete(0, len(txtName3))
+    txtNum1 = taxtNum1.get()
+    taxtNum1.delete(0, len(txtNum1))
+    txtNum2 = taxtNum2.get()
+    taxtNum2.delete(0, len(txtNum2))
+    txtNum3 = taxtNum3.get()
+    taxtNum3.delete(0, len(txtNum3))
+    txtPrice1 = taxtprice1.get()
+    taxtprice1.delete(0, len(txtPrice1))
+    txtPrice2 = taxtprice2.get()
+    taxtprice2.delete(0, len(txtPrice2))
+    txtPrice3 = taxtprice3.get()
+    taxtprice3.delete(0, len(txtPrice3))
+    txtCash = taxtcash.get()
+    taxtcash.delete(0,len(txtCash))
+    try:
+        label0.configure(text="0.00",font=15,fg="green")
+        label00.configure(text="0.00",font=15,fg="red")
+    except:
+        pass
+
+
+
+
+mainwindow = Tk()
+mainwindow.geometry('500x400')
+label1 = Label(mainwindow,text="Tayakon Shop",font=15,)
+label1.grid(row=0,column=3)
+
+labelNameProduct = Label(mainwindow,text="รายการสินค้า",font=7)
+labelNameProduct.grid(row=1,column=2)
+labelName1 = Label(mainwindow,text="ชิ้นที่1",font=5)
+labelName1.grid(row=2,column=0)
+labelName2 = Label(mainwindow,text="ชิ้นที่2",font=5)
+labelName2.grid(row=3,column=0)
+labelName3 = Label(mainwindow,text="ชิ้นที่3",font=5)
+labelName3.grid(row=4,column=0)
+
+labelProduct1 = Label(mainwindow,text="ชิ้น",font=5)
+labelProduct1.grid(row=2,column=4)
+labelProduct2 = Label(mainwindow,text="ชิ้น",font=5)
+labelProduct2.grid(row=3,column=4)
+labelProduct3 = Label(mainwindow,text="ชิ้น",font=5)
+labelProduct3.grid(row=4,column=4)
+
+labelBath1 = Label(mainwindow,text="บาท",font=5)
+labelBath1.grid(row=2,column=6)
+
+labelBath2 = Label(mainwindow,text="บาท",font=5)
+labelBath2.grid(row=3,column=6)
+
+labelBath3 = Label(mainwindow,text="บาท",font=5)
+labelBath3.grid(row=4,column=6)
+
+taxtName1 = Entry(mainwindow)
+taxtName1.grid(row=2,column=2)
+taxtName2 = Entry(mainwindow)
+taxtName2.grid(row=3,column=2)
+taxtName3 = Entry(mainwindow)
+taxtName3.grid(row=4,column=2)
+
+taxtNum1 = Entry(mainwindow,width="3")
+taxtNum1.grid(row=2,column=3)
+taxtNum2 = Entry(mainwindow,width="3")
+taxtNum2.grid(row=3,column=3)
+taxtNum3 = Entry(mainwindow,width="3")
+taxtNum3.grid(row=4,column=3)
+
+taxtprice1 = Entry(mainwindow,width="5")
+taxtprice1.grid(row=2,column=5)
+taxtprice2 = Entry(mainwindow,width="5")
+taxtprice2.grid(row=3,column=5)
+taxtprice3 = Entry(mainwindow,width="5")
+taxtprice3.grid(row=4,column=5)
+
+labelNum = Label(mainwindow,text="จำนวน",font=6)
+labelNum.grid(row=1,column=3)
+labelPrice = Label(mainwindow,text="ราคา",font=6)
+labelPrice.grid(row=1,column=5)
+labelCash = Label(mainwindow,text="เงินสด/cash",font=5)
+labelCash.grid(row=6,column=2)
+taxtcash = Entry(mainwindow,width="12")
+taxtcash.grid(row=7,column=2)
+
+
+labelBath = Label(mainwindow,text="บาท",font=5)
+labelBath.grid(row=8,column=2)
+
+labelTotal = Label(mainwindow,text="รวมทั้งสิน/Total",font=10)
+labelTotal.grid(row=6,column=5)
+label0 = Label(mainwindow,text="0.00",font=15,fg="green")
+label0.grid(row=7,column=5)
+
+labelTon = Label(mainwindow,text="เงินทอน/Change",font=10)
+labelTon.grid(row=9,column=5)
+label00 = Label(mainwindow,text="0.00",font=15,fg="red")
+label00.grid(row=10,column=5)
+
+
+label_BathTotal = Label(mainwindow,text="บาท",font="5")
+label_BathTotal.grid(row=7,column=6)
+
+label_BathChan = Label(mainwindow,text="บาท",font="5")
+label_BathChan.grid(row=10,column=6)
+
+
+butSum = Button(mainwindow,text="รวมเงิน",width="10")
+butSum.grid(row=6,column=3)
+butSum.bind('<Button-1>',Total)
+butChangemoney = Button(mainwindow,text="ทอนเงิน",width="10")
+butChangemoney.grid(row=8,column=3)
+butChangemoney.bind('<Button-1>',changeMoney)
+butClear = Button(mainwindow,text="เคลียร์",width="10")
+butClear.grid(row=10,column=3)
+butClear.bind('<Button-1>',clear)
+butShow = Button(mainwindow,text = "แสดงรายการ",width="10")
+butShow.grid(row=11,column=6)
+butShow.bind('<Button-1>',showBill)
+
+
+mainwindow.mainloop()
+try:
+    showBill()
+except:
+    pass
